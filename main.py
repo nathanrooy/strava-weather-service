@@ -4,7 +4,7 @@ from multiprocessing import Process
 from flask import Flask, url_for, render_template, request, session, abort, redirect, jsonify, send_from_directory
 from flask_restful import reqparse
 
-from utils import weather, manage_db, strava_helpers, git_helpers, env_check
+from utils import weather, manage_db, strava_helpers, env_check
 from utils.exceptions import StravaAPIError
 
 
@@ -95,28 +95,9 @@ def process_webhook_get():
         return {'error': 'verification tokens does not match'}
 
 
-@app.route('/features/')
-def features():
-    return render_template('features.html')
-
-
-@app.route('/contacts/')
-def contacts():
-    return render_template('contacts.html')
-
-
 @app.route('/robots.txt')
 def robots():
     return send_from_directory('static', 'robots.txt')
-
-
-@app.route('/update_server', methods=['POST'])
-def update_server():
-    x_hub_signature = request.headers.get('X-Hub-Signature')
-    if not git_helpers.is_valid_signature(x_hub_signature, request.data):
-        return 'wrong signature', 406
-    git_helpers.pull()
-    return 'Server successfully updated', 202
 
 
 @app.errorhandler(404)

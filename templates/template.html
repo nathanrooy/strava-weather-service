@@ -50,39 +50,58 @@
             background-image: url("/static/pexels-pixabay-529621.jpg");
             background-size: cover;
             background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
 
-        .content {
-            max-width: 400px;
-            min-width:300px; 
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+        @media only screen and (max-height: 500px) {
+            .content {
+                top:2rem;
+                left:50%;
+                transform: translate(-50%);
+            }
 
+            body {
+                min-height:500px;
+            }
+        }
+
+        @media only screen and (min-height: 501px) {
+            .content {
+                top:50%;
+                left:50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+        
+        .content {
+            position:absolute;
+            max-width:390px;
+            min-width:300px; 
+            
             background-color: rgba(0,0,0,0.5);
             padding-top:0.5rem;
             padding-bottom:1rem;
             padding-left:2rem;
             padding-right:2rem;
-            border-radius: 1rem;
+            border-radius:1rem;
         }
 
         .content h1{
-            font-weight: 700;
-            font-size: 2.3rem;
+            font-weight:700;
+            font-size:2.3rem;
         }
 
         .content p {
             font-size:1rem;
-            font-weight: 400;
-            line-height: 1.3rem;
+            font-weight:400;
+            line-height:1.3rem;
         }
 
         .connect-btn {
             margin-bottom:2rem;
             margin-top:3rem;
-            text-align: center;
+            text-align:center;
         }
 
         .user-selection {
@@ -91,8 +110,8 @@
         }
 
         label {
-            font-weight: 400;
-            font-family: 'Roboto';
+            font-weight:400;
+            font-family:'Roboto';
             color:#fff;
         }
 
@@ -103,14 +122,13 @@
         }
 
         input {
-            font-weight: 400;
-            font-family: 'Roboto';
+            font-weight:400;
+            font-family:'Roboto';
             color:#000;
         }
-        a,
-        a:focus,
-        a:hover {
-        color: #fff;
+        
+        a, a:focus, a:hover {
+            color:#fff;
         }
 
     </style>
@@ -122,9 +140,6 @@
             <h1>{% block maintitle %}The title of my page{% endblock %}</h1>
             {% block body %}  Add info here  {% endblock %}
         </main>
-
-        <footer class="footer">
-        </footer>
     </div>
 </body>
 </html>

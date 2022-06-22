@@ -3,14 +3,17 @@
 {% block title %}Home{% endblock%}
 
 {% block maintitle %}
-Free weather details for your Strava activities!
 {% endblock %}
 
 {% block body %}
+<div>
+    <img src="/static/windspeed.svg" style="display: block; margin: auto auto;" width="100%">
+</div>
+<h3>Free weather details for your Strava activities!</h3>
 <div class="connect-btn">
     <a href="{{ url_to_get_code }}">
         <img src="/static/btn_strava_connectwith_orange.svg" width="250px">
     </a>
 </div>
-<p>This is a 100% <a target="_self" href="https://github.com/nathanrooy/strava-weather-service/">open source</a>, privacy preserving service. No personal details are ever persisted. You can cancel your subscription at any time.</p>
+<p>This is a 100% <a target="_self" href="https://github.com/nathanrooy/strava-weather-service/">open source</a>, privacy preserving service. No personal details are ever requested or persisted. You can cancel your subscription at any time.</p>
 {% endblock %}
