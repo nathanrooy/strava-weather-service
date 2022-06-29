@@ -33,7 +33,7 @@ def add_weather(athlete_id: int, activity_id: int):
     # Description of activity checking. Don't format this activity if it contains a weather data.
     description = activity.get('description')
     description = '' if description is None else description.rstrip() + '\n'
-    if '°C' in description:
+    if '°C' in description or '°F' in description:
         print(f'Weather description for activity ID={activity_id} is already set.')
         return  # ok, but no processing
 
@@ -84,7 +84,7 @@ def get_weather_description(lat, lon, w_time, s) -> str:
 
     gust = lambda x: f"({x:0.1f} gust) "
     return (
-        f"{w['temp']:0.1f}º{'F' if s.units=='imperial' else 'C'}"
+        f"{w['temp']:0.1f}°{'F' if s.units=='imperial' else 'C'}"
         f", clouds: {w['clouds']}%"
         f", humidity: {w['humidity']}%"
         f", wind: {w['wind_speed']:0.1f}"
